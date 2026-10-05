@@ -2,222 +2,736 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0b0d12" />
-  <meta name="description" content="Sai's Weekly Focus — DSA, academics, projects and career." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#090b11" />
+  <meta name="description" content="Weekly Focus — Personal weekly planner for DSA, academics, projects and career." />
+
+  <!-- PWA & Mobile Capabilities -->
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Weekly Focus" />
+  <meta name="application-name" content="Weekly Focus" />
 
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="icon" href="favicon.png" type="image/png" sizes="64x64" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180" />
 
-  <title>Weekly Focus</title>
+  <title>Weekly Focus — Personal OS</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+  <!-- Clean Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="container">
 
-    :root {
-      --bg: #090b10;
-      --card: #11141b;
-      --card2: #171b24;
-      --border: #252b37;
-      --text: #f5f7fa;
-      --muted: #9ba3b2;
-      --accent: #7c8cff;
-      --green: #61d39c;
-      --orange: #ffb86b;
-      --red: #ff7070;
-    }
+    <!-- ====================================================================
+         TOP STATUS BAR & HEADER
+         ==================================================================== -->
+    <header class="app-header">
+      <div class="top-bar">
+        <div class="live-badge-group">
+          <div class="live-pill">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            <span id="liveDate">Mon, Oct 6</span>
+            <span>·</span>
+            <span id="liveTime">00:00 AM</span>
+          </div>
+          <div id="activeBlockPill" class="live-pill active-block-pill hidden">
+            <!-- Populated via JS -->
+          </div>
+        </div>
 
-    body {
-      font-family:
-        Inter,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.5;
-      padding: 18px;
-    }
+        <div class="header-actions">
+          <button id="btnInstallApp" class="btn-install" type="button" aria-label="Install Weekly Focus app">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>Install App</span>
+          </button>
+        </div>
+      </div>
 
-    .container {
-      width: 100%;
-      max-width: 900px;
-      margin: auto;
-    }
+      <!-- Hero Header & Code Preview -->
+      <div class="hero-grid">
+        <div class="hero-main">
+          <span class="eyebrow">Personal Operating System</span>
+          <h1 class="brand-title">Weekly <span class="accent-text">Focus</span></h1>
+          <p class="main-tagline">
+            Consistent effort → real progress → better me.
+          </p>
 
-    header {
-      padding: 18px 0 24px;
-    }
+          <div class="mindset-badges">
+            <span class="mindset-pill">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Solve
+            </span>
+            <span class="mindset-pill">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Learn
+            </span>
+            <span class="mindset-pill">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Build
+            </span>
+            <span class="mindset-pill">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Grow
+            </span>
+            <span class="mindset-pill">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Repeat
+            </span>
+          </div>
+        </div>
 
-    .eyebrow {
-      color: var(--accent);
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-bottom: 6px;
-    }
+        <!-- Code Snippet Card (From Reference Image) -->
+        <aside class="code-card" aria-label="Code Mindset Snippet">
+          <div class="code-header">
+            <div class="code-dots" aria-hidden="true">
+              <div class="code-dot"></div>
+              <div class="code-dot"></div>
+              <div class="code-dot"></div>
+            </div>
+            <span class="code-tag">loop.c</span>
+          </div>
+          <pre class="code-body"><code><span class="code-keyword">while</span> (alive) {
+  <span class="code-func">improve</span>();
+  <span class="code-func">stay_disciplined</span>();
+  <span class="code-func">be_consistent</span>();
+  <span class="code-keyword">if</span> (tired) <span class="code-func">take_rest</span>();
+}
+<span class="code-comment">// Progress &gt; Perfection</span></code></pre>
+        </aside>
+      </div>
 
-    h1 {
-      font-size: clamp(2rem, 8vw, 3.5rem);
-      line-height: 1;
-      margin-bottom: 10px;
-    }
+      <!-- Core Principle Quote Card -->
+      <div class="banner-quote">
+        <strong>“Don’t optimize the timetable. Follow the timetable.”</strong>
+        <p>Missed a block? Don’t punish the next block. Resume from where you are.</p>
+      </div>
 
-    .subtitle {
-      color: var(--muted);
-      font-size: 0.98rem;
-    }
+      <!-- Daily Context Strip -->
+      <div class="context-strip">
+        <div class="context-items">
+          <div class="context-item">
+            <span>College:</span>
+            <strong>9:40 AM – 4:20 PM</strong>
+          </div>
+          <div class="context-item">
+            <span>Reach Hostel:</span>
+            <strong>5:00 – 5:30 PM</strong>
+          </div>
+          <div class="context-item">
+            <span>Decompression:</span>
+            <strong>5:30 – 6:00 PM (Real break)</strong>
+          </div>
+        </div>
+        <div class="context-badge">
+          Consistency Creates Results ⚡
+        </div>
+      </div>
+    </header>
 
-    .quote {
-      background: linear-gradient(135deg, #141827, #10131b);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 20px;
-      margin-bottom: 20px;
-    }
+    <main>
+      <!-- ====================================================================
+           PRIORITIES SECTION
+           ==================================================================== -->
+      <section aria-labelledby="section-priorities">
+        <div class="section-header">
+          <h2 id="section-priorities" class="section-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-indigo)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            Priorities
+          </h2>
+          <span class="section-subtitle">Core pillars of the weekly routine</span>
+        </div>
 
-    .quote strong {
-      display: block;
-      font-size: 1.05rem;
-      margin-bottom: 7px;
-    }
+        <div class="priorities-grid">
+          <article class="priority-card">
+            <div class="priority-number">1</div>
+            <div class="priority-content">
+              <h3 class="priority-title">DSA</h3>
+              <p class="priority-desc">Daily problem solving + revision</p>
+            </div>
+          </article>
 
-    .quote span {
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
+          <article class="priority-card">
+            <div class="priority-number">2</div>
+            <div class="priority-content">
+              <h3 class="priority-title">Academics</h3>
+              <p class="priority-desc">Classes, revision and exam preparation</p>
+            </div>
+          </article>
 
-    section {
-      margin-bottom: 24px;
-    }
+          <article class="priority-card">
+            <div class="priority-number">3</div>
+            <div class="priority-content">
+              <h3 class="priority-title">Projects</h3>
+              <p class="priority-desc">Build real, explainable software</p>
+            </div>
+          </article>
 
-    .section-title {
-      font-size: 1.2rem;
-      margin-bottom: 12px;
-    }
+          <article class="priority-card">
+            <div class="priority-number">4</div>
+            <div class="priority-content">
+              <h3 class="priority-title">Career</h3>
+              <p class="priority-desc">Applications, GitHub and portfolio</p>
+            </div>
+          </article>
 
-    .priority-grid,
-    .project-grid,
-    .target-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-    }
+          <article class="priority-card">
+            <div class="priority-number">5</div>
+            <div class="priority-content">
+              <h3 class="priority-title">Sleep</h3>
+              <p class="priority-desc">Protect recovery and consistency</p>
+            </div>
+          </article>
 
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 15px;
-      padding: 15px;
-    }
+          <article class="priority-card">
+            <div class="priority-number">6</div>
+            <div class="priority-content">
+              <h3 class="priority-title">Discipline</h3>
+              <p class="priority-desc">Do the planned block, not the perfect block</p>
+            </div>
+          </article>
+        </div>
+      </section>
 
-    .card-title {
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
+      <!-- ====================================================================
+           FLAGSHIP PROJECTS SECTION
+           ==================================================================== -->
+      <section aria-labelledby="section-projects">
+        <div class="section-header">
+          <h2 id="section-projects" class="section-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+            Flagship Projects
+          </h2>
+          <span class="section-subtitle">High-impact development pipeline</span>
+        </div>
 
-    .card-text {
-      color: var(--muted);
-      font-size: 0.84rem;
-    }
+        <div class="projects-grid">
+          <!-- 1. CampusUnstop -->
+          <article class="project-card">
+            <div class="project-top">
+              <div class="project-tags">
+                <span class="tag-category">Full Stack</span>
+                <span class="tag-badge">Primary Focus</span>
+              </div>
+              <h3 class="project-name">CampusUnstop</h3>
+              <p class="project-desc">
+                Full-stack campus event management platform with authentication, event management, registrations, calendar and notifications.
+              </p>
+            </div>
+            <div class="project-meta">
+              <span>Scheduled: <strong>Mon &amp; Tue 6:00–7:30 PM</strong></span>
+              <span>Active Build</span>
+            </div>
+          </article>
 
-    .project {
-      min-height: 125px;
-    }
+          <!-- 2. Bhoomitra-AI -->
+          <article class="project-card">
+            <div class="project-top">
+              <div class="project-tags">
+                <span class="tag-category">AI + IoT</span>
+                <span class="tag-highlight">🏆 1st Prize — GenAI Forge 2026</span>
+              </div>
+              <h3 class="project-name">Bhoomitra-AI</h3>
+              <p class="project-desc">
+                AI-powered precision farming system using crop disease detection, ESP32 monitoring, irrigation automation and a web dashboard.
+              </p>
+            </div>
+            <div class="project-meta">
+              <span>Scheduled: <strong>Wednesday 6:00–7:30 PM</strong></span>
+              <span>Showcase &amp; Polish</span>
+            </div>
+          </article>
 
-    .project .tag {
-      display: inline-block;
-      margin-bottom: 9px;
-      padding: 4px 8px;
-      border-radius: 999px;
-      background: var(--card2);
-      color: var(--accent);
-      font-size: 0.7rem;
-      font-weight: 700;
-    }
+          <!-- 3. ShilpAI -->
+          <article class="project-card">
+            <div class="project-top">
+              <div class="project-tags">
+                <span class="tag-category">AI · SIH 2026</span>
+                <span class="tag-highlight">SIH 2026 PS SIH26090</span>
+              </div>
+              <h3 class="project-name">ShilpAI</h3>
+              <p class="project-desc">
+                AI-powered digital marketplace and smart cataloging platform for marginalized artisans.
+              </p>
+            </div>
+            <div class="project-meta">
+              <span>Scheduled: <strong>Thursday 6:00–7:30 PM</strong></span>
+              <span>AI Backend + Features</span>
+            </div>
+          </article>
 
-    .project p {
-      color: var(--muted);
-      font-size: 0.84rem;
-    }
+          <!-- 4. TBP-SIH26092 -->
+          <article class="project-card">
+            <div class="project-top">
+              <div class="project-tags">
+                <span class="tag-category">SIH 2026</span>
+                <span class="tag-badge">Weekend Focus</span>
+              </div>
+              <h3 class="project-name">TBP-SIH26092</h3>
+              <p class="project-desc">
+                Current SIH 2026 problem-solving project.
+              </p>
+            </div>
+            <div class="project-meta">
+              <span>Status: <strong>Design / architecture stage</strong></span>
+              <span>Sat &amp; Sun Build</span>
+            </div>
+          </article>
+        </div>
+      </section>
 
-    .schedule {
-      overflow-x: auto;
-      border: 1px solid var(--border);
-      border-radius: 15px;
-      background: var(--card);
-    }
+      <!-- ====================================================================
+           WEEKLY SCHEDULE SECTION (Responsive Table & Day Timeline)
+           ==================================================================== -->
+      <section aria-labelledby="section-schedule">
+        <div class="section-header">
+          <h2 id="section-schedule" class="section-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-amber)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            Weekly Schedule
+          </h2>
 
-    table {
-      width: 100%;
-      min-width: 700px;
-      border-collapse: collapse;
-    }
+          <div class="view-toggle" role="group" aria-label="Schedule View Switcher">
+            <button id="btnViewTimeline" type="button" class="view-btn active">Day Timeline</button>
+            <button id="btnViewTable" type="button" class="view-btn">Week Table</button>
+          </div>
+        </div>
 
-    th,
-    td {
-      padding: 12px 10px;
-      border-bottom: 1px solid var(--border);
-      text-align: left;
-      font-size: 0.82rem;
-      vertical-align: top;
-    }
+        <!-- Schedule Controls (Day Tabs for Timeline view) -->
+        <div class="schedule-controls">
+          <nav id="dayTabs" class="day-tabs" aria-label="Select day for timeline view">
+            <!-- Day tabs generated dynamically via JS -->
+          </nav>
+        </div>
 
-    th {
-      background: var(--card2);
-      color: var(--accent);
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
+        <!-- 1. Day Timeline View (Mobile-First UX) -->
+        <div id="timelineView">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+            <span id="timelineDayLabel" style="font-weight: 700; color: #e2e8f0; font-size: 0.95rem;">Monday</span>
+            <span style="font-size: 0.78rem; color: var(--text-muted);">Current block highlighted</span>
+          </div>
+          <div id="timelineContainer" class="timeline-container">
+            <!-- Rendered via JS -->
+          </div>
+        </div>
 
-    tr:last-child td {
-      border-bottom: none;
-    }
+        <!-- 2. Full Week Grid View (Desktop Table) -->
+        <div id="tableView" class="schedule-table-wrap hidden">
+          <table class="schedule-table">
+            <thead>
+              <tr>
+                <th class="th-time">Time</th>
+                <th class="th-mon">Monday</th>
+                <th class="th-tue">Tuesday</th>
+                <th class="th-wed">Wednesday</th>
+                <th class="th-thu">Thursday</th>
+                <th class="th-fri">Friday</th>
+                <th class="th-sat">Saturday</th>
+                <th class="th-sun">Sunday</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="td-time">6:45–7:00</td>
+                <td colspan="7">Wake up, freshen up, light exercise / meditation</td>
+              </tr>
+              <tr>
+                <td class="td-time">7:00–8:00</td>
+                <td><span class="block-chip">DSA</span><span class="block-sub">Daily problem solving</span></td>
+                <td><span class="block-chip">DSA</span><span class="block-sub">Daily problem solving</span></td>
+                <td><span class="block-chip">DSA</span><span class="block-sub">Daily problem solving</span></td>
+                <td><span class="block-chip">DSA</span><span class="block-sub">Daily problem solving</span></td>
+                <td><span class="block-chip">DSA</span><span class="block-sub">Daily problem solving</span></td>
+                <td><span class="block-chip">DSA (1.5–2h)</span><span class="block-sub">2–3 DSA problems</span></td>
+                <td><span class="block-chip">DSA (1–1.5h)</span><span class="block-sub">1–2 DSA problems</span></td>
+              </tr>
+              <tr>
+                <td class="td-time">8:00–9:15</td>
+                <td colspan="5">Breakfast, get ready, leave for college</td>
+                <td>Breakfast + personal time</td>
+                <td>Breakfast + personal time</td>
+              </tr>
+              <tr>
+                <td class="td-time">9:15–9:40</td>
+                <td colspan="5">Travel to college</td>
+                <td colspan="2">Personal time / flex</td>
+              </tr>
+              <tr>
+                <td class="td-time">9:40–4:20</td>
+                <td colspan="5">
+                  <span class="block-chip">College</span>
+                  <span class="block-sub">Classes &amp; Labs</span>
+                </td>
+                <td>
+                  <span class="block-chip">Project Deep Work (2–3h)</span>
+                  <span class="block-sub">TBP-SIH26092</span>
+                </td>
+                <td>
+                  <span class="block-chip">Academic Revision (2–3h)</span>
+                  <span class="block-sub">Weekly syllabus review</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="td-time">4:20–5:30</td>
+                <td colspan="5">Travel + Hostel + Snack + Decompress</td>
+                <td colspan="2">Break / Personal time</td>
+              </tr>
+              <tr>
+                <td class="td-time">5:30–6:00</td>
+                <td colspan="5">
+                  <span class="block-chip">Decompression</span>
+                  <span class="block-sub">Real break (relax)</span>
+                </td>
+                <td colspan="2">Lunch + Break</td>
+              </tr>
+              <tr>
+                <td class="td-time">6:00–7:30</td>
+                <td><span class="block-chip">CampusUnstop</span><span class="block-sub">Development</span></td>
+                <td><span class="block-chip">CampusUnstop</span><span class="block-sub">Development</span></td>
+                <td><span class="block-chip">Bhoomitra-AI</span><span class="block-sub">Development</span></td>
+                <td><span class="block-chip">ShilpAI</span><span class="block-sub">Development</span></td>
+                <td><span class="block-chip">CampusUnstop / ShilpAI</span><span class="block-sub">Catch-up &amp; polish</span></td>
+                <td><span class="block-chip">TBP-SIH26092</span><span class="block-sub">Design / Build</span></td>
+                <td><span class="block-chip">TBP-SIH26092</span><span class="block-sub">Design / Build</span></td>
+              </tr>
+              <tr>
+                <td class="td-time">7:30–8:00</td>
+                <td colspan="7">Dinner</td>
+              </tr>
+              <tr>
+                <td class="td-time">8:00–9:15</td>
+                <td><span class="block-chip">Academics</span><span class="block-sub">Notes / prep</span></td>
+                <td><span class="block-chip">Academics</span><span class="block-sub">Notes / prep</span></td>
+                <td><span class="block-chip">Academics</span><span class="block-sub">Notes / prep</span></td>
+                <td><span class="block-chip">Academics</span><span class="block-sub">Notes / prep</span></td>
+                <td><span class="block-chip">Applications</span><span class="block-sub">Resume + LinkedIn</span></td>
+                <td><span class="block-chip">Academics (1.5–2h)</span><span class="block-sub">Deep study</span></td>
+                <td><span class="block-chip">Academic Revision</span><span class="block-sub">Revision &amp; Apps</span></td>
+              </tr>
+              <tr>
+                <td class="td-time">9:15–9:30</td>
+                <td colspan="7">Short Break</td>
+              </tr>
+              <tr>
+                <td class="td-time">9:30–10:15</td>
+                <td><span class="block-chip">DSA Review</span></td>
+                <td><span class="block-chip">DSA Review</span></td>
+                <td><span class="block-chip">DSA Review</span></td>
+                <td><span class="block-chip">DSA Review</span></td>
+                <td><span class="block-chip">GitHub / Portfolio</span><span class="block-sub">+ Light DSA</span></td>
+                <td><span class="block-chip">DSA / Contest</span><span class="block-sub">1h Problem set</span></td>
+                <td><span class="block-chip">Applications / Revision</span></td>
+              </tr>
+              <tr>
+                <td class="td-time">10:15–10:30</td>
+                <td colspan="6">Plan tomorrow</td>
+                <td><span class="block-chip" style="color: var(--accent-emerald);">Plan next week</span></td>
+              </tr>
+              <tr>
+                <td class="td-time">10:30+</td>
+                <td colspan="7">Wind down + sleep (Protect 7–8 hrs)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-    .time {
-      white-space: nowrap;
-      color: var(--orange);
-      font-weight: 700;
-    }
+      <!-- ====================================================================
+           WEEKEND MODE SECTION
+           ==================================================================== -->
+      <section aria-labelledby="section-weekend">
+        <div class="section-header">
+          <h2 id="section-weekend" class="section-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+            </svg>
+            Weekend Mode
+          </h2>
+          <span class="section-subtitle">Structured deep build &amp; strategic consolidation</span>
+        </div>
 
-    .weekday {
-      font-weight: 700;
-    }
+        <div class="weekend-grid">
+          <!-- Saturday -->
+          <article class="weekend-card saturday">
+            <span class="weekend-badge">Saturday Flow</span>
+            <div class="weekend-flow">
+              <span class="flow-step">Deep project work</span>
+              <span class="flow-arrow">→</span>
+              <span class="flow-step">TBP-SIH26092</span>
+              <span class="flow-arrow">→</span>
+              <span class="flow-step">DSA</span>
+              <span class="flow-arrow">→</span>
+              <span class="flow-step">Academics</span>
+            </div>
+            <p class="project-desc">
+              Focus on unbroken deep-work blocks, advancing TBP-SIH26092 architectural modules, contest simulation, and consolidated academic study.
+            </p>
+          </article>
 
-    .focus {
-      color: var(--muted);
-    }
+          <!-- Sunday -->
+          <article class="weekend-card sunday">
+            <span class="weekend-badge">Sunday Flow</span>
+            <div class="weekend-flow">
+              <span class="flow-step">TBP-SIH26092 design/research</span>
+              <span class="flow-arrow">→</span>
+              <span class="flow-step">Academic revision</span>
+              <span class="flow-arrow">→</span>
+              <span class="flow-step">Applications</span>
+              <span class="flow-arrow">→</span>
+              <span class="flow-step">Weekly planning</span>
+              <span class="flow-arrow">→</span>
+              <span class="flow-step">Rest</span>
+            </div>
+            <p class="project-desc">
+              Research synthesis, comprehensive syllabus review, pipeline applications, and reviewing weekly targets before an early night of rest.
+            </p>
+          </article>
+        </div>
+      </section>
 
-    .targets {
-      display: grid;
-      gap: 10px;
-    }
+      <!-- ====================================================================
+           WEEKLY TARGETS SECTION
+           ==================================================================== -->
+      <section aria-labelledby="section-targets">
+        <div class="section-header">
+          <h2 id="section-targets" class="section-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-emerald)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <circle cx="12" cy="12" r="6"></circle>
+              <circle cx="12" cy="12" r="2"></circle>
+            </svg>
+            Weekly Targets
+          </h2>
+          <span class="section-subtitle">Real targets &amp; interactive tracker</span>
+        </div>
 
-    .target {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 14px;
-    }
+        <div class="targets-grid">
+          <!-- Academics -->
+          <article class="target-card" data-key="academics" data-min="10" data-max="12">
+            <div class="target-header">
+              <span class="target-category-name">Academics</span>
+              <span class="target-goal">10–12 hrs</span>
+            </div>
+            <div class="target-tracker">
+              <span class="tracker-logged logged-value">Target: <strong>10–12h</strong></span>
+              <div class="tracker-actions">
+                <button type="button" class="tracker-btn btn-sub-hour" title="Decrease hour" aria-label="Decrease academics hour">-</button>
+                <button type="button" class="tracker-btn btn-add-hour" title="Add hour" aria-label="Add academics hour">+</button>
+              </div>
+            </div>
+          </article>
 
-    .target-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-    }
+          <!-- DSA -->
+          <article class="target-card" data-key="dsa" data-min="8" data-max="9">
+            <div class="target-header">
+              <span class="target-category-name">DSA</span>
+              <span class="target-goal">8–9 hrs</span>
+            </div>
+            <div class="target-tracker">
+              <span class="tracker-logged logged-value">Target: <strong>8–9h</strong></span>
+              <div class="tracker-actions">
+                <button type="button" class="tracker-btn btn-sub-hour" title="Decrease hour" aria-label="Decrease DSA hour">-</button>
+                <button type="button" class="tracker-btn btn-add-hour" title="Add hour" aria-label="Add DSA hour">+</button>
+              </div>
+            </div>
+          </article>
 
-    .target-value {
-      color: var(--green);
-      font-weight: 700;
-      white-space: nowrap;
-    }
+          <!-- Projects -->
+          <article class="target-card" data-key="projects" data-min="6" data-max="8">
+            <div class="target-header">
+              <span class="target-category-name">Projects</span>
+              <span class="target-goal">6–8 hrs</span>
+            </div>
+            <div class="target-tracker">
+              <span class="tracker-logged logged-value">Target: <strong>6–8h</strong></span>
+              <div class="tracker-actions">
+                <button type="button" class="tracker-btn btn-sub-hour" title="Decrease hour" aria-label="Decrease projects hour">-</button>
+                <button type="button" class="tracker-btn btn-add-hour" title="Add hour" aria-label="Add projects hour">+</button>
+              </div>
+            </div>
+          </article>
 
-    .checklis
+          <!-- Applications -->
+          <article class="target-card" data-key="applications" data-min="2" data-max="3">
+            <div class="target-header">
+              <span class="target-category-name">Applications</span>
+              <span class="target-goal">2–3 hrs</span>
+            </div>
+            <div class="target-tracker">
+              <span class="tracker-logged logged-value">Target: <strong>2–3h</strong></span>
+              <div class="tracker-actions">
+                <button type="button" class="tracker-btn btn-sub-hour" title="Decrease hour" aria-label="Decrease applications hour">-</button>
+                <button type="button" class="tracker-btn btn-add-hour" title="Add hour" aria-label="Add applications hour">+</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- GitHub / Portfolio -->
+          <article class="target-card" data-key="github" data-min="1" data-max="2">
+            <div class="target-header">
+              <span class="target-category-name">GitHub / Portfolio</span>
+              <span class="target-goal">1–2 hrs</span>
+            </div>
+            <div class="target-tracker">
+              <span class="tracker-logged logged-value">Target: <strong>1–2h</strong></span>
+              <div class="tracker-actions">
+                <button type="button" class="tracker-btn btn-sub-hour" title="Decrease hour" aria-label="Decrease GitHub hour">-</button>
+                <button type="button" class="tracker-btn btn-add-hour" title="Add hour" aria-label="Add GitHub hour">+</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           DAILY CHECKLIST SECTION (LocalStorage & Logical Daily Reset)
+           ==================================================================== -->
+      <section aria-labelledby="section-checklist">
+        <div class="checklist-wrapper">
+          <div class="checklist-header">
+            <div class="checklist-meta">
+              <h2 id="section-checklist" class="section-title" style="margin-bottom: 2px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-emerald)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 11l3 3L22 4"></path>
+                  <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                </svg>
+                Daily Checklist
+              </h2>
+              <span id="checklistProgressText" class="checklist-progress-text">0 of 7 completed (0%)</span>
+              <div class="checklist-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                <div id="checklistProgressFill" class="checklist-progress-fill"></div>
+              </div>
+            </div>
+
+            <button id="btnResetChecklist" class="btn-reset-checklist" type="button">Reset Today</button>
+          </div>
+
+          <ul class="checklist-items" role="list">
+            <li class="checklist-item" tabindex="0" role="checkbox" aria-checked="false">
+              <input type="checkbox" class="checklist-checkbox" id="chk1" tabindex="-1" />
+              <label for="chk1" class="checklist-label">Woke up on time</label>
+            </li>
+            <li class="checklist-item" tabindex="0" role="checkbox" aria-checked="false">
+              <input type="checkbox" class="checklist-checkbox" id="chk2" tabindex="-1" />
+              <label for="chk2" class="checklist-label">Completed DSA block</label>
+            </li>
+            <li class="checklist-item" tabindex="0" role="checkbox" aria-checked="false">
+              <input type="checkbox" class="checklist-checkbox" id="chk3" tabindex="-1" />
+              <label for="chk3" class="checklist-label">Attended college / completed academic work</label>
+            </li>
+            <li class="checklist-item" tabindex="0" role="checkbox" aria-checked="false">
+              <input type="checkbox" class="checklist-checkbox" id="chk4" tabindex="-1" />
+              <label for="chk4" class="checklist-label">Completed project deep-work block</label>
+            </li>
+            <li class="checklist-item" tabindex="0" role="checkbox" aria-checked="false">
+              <input type="checkbox" class="checklist-checkbox" id="chk5" tabindex="-1" />
+              <label for="chk5" class="checklist-label">Completed revision / review</label>
+            </li>
+            <li class="checklist-item" tabindex="0" role="checkbox" aria-checked="false">
+              <input type="checkbox" class="checklist-checkbox" id="chk6" tabindex="-1" />
+              <label for="chk6" class="checklist-label">Planned tomorrow</label>
+            </li>
+            <li class="checklist-item" tabindex="0" role="checkbox" aria-checked="false">
+              <input type="checkbox" class="checklist-checkbox" id="chk7" tabindex="-1" />
+              <label for="chk7" class="checklist-label">Protected sleep</label>
+            </li>
+          </ul>
+
+          <div id="checklistCelebration" class="checklist-celebration" role="status">
+            <!-- Populated via JS when 7/7 -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           REMINDERS & MOTIVATION SECTION
+           ==================================================================== -->
+      <section aria-labelledby="section-reminders">
+        <div class="section-header">
+          <h2 id="section-reminders" class="section-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-amber)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            Reminders &amp; Principles
+          </h2>
+          <span class="section-subtitle">Mental models for the long run</span>
+        </div>
+
+        <div class="reminders-grid">
+          <div class="reminder-card">
+            <span class="reminder-icon" aria-hidden="true">🎯</span>
+            <p>“Discipline is choosing what you want most over what you want now.”</p>
+          </div>
+
+          <div class="reminder-card">
+            <span class="reminder-icon" aria-hidden="true">⏱️</span>
+            <p>“A few focused hours every day beat a random all-nighter.”</p>
+          </div>
+
+          <div class="reminder-card">
+            <span class="reminder-icon" aria-hidden="true">🛡️</span>
+            <p>“You don’t have to be perfect. You just have to keep showing up.”</p>
+          </div>
+
+          <div class="reminder-card">
+            <span class="reminder-icon" aria-hidden="true">🌱</span>
+            <p>“Build skills, not just projects.”</p>
+          </div>
+
+          <div class="reminder-card">
+            <span class="reminder-icon" aria-hidden="true">⭐</span>
+            <p>“Your future self will thank you for the effort you put in today.”</p>
+          </div>
+
+          <div class="reminder-card">
+            <span class="reminder-icon" aria-hidden="true">🧭</span>
+            <p>“Don’t optimize the timetable. Follow the timetable.”</p>
+          </div>
+        </div>
+
+        <div class="callout-box">
+          <span>Small steps every day lead to big results 📊</span>
+        </div>
+      </section>
+    </main>
+
+    <!-- ====================================================================
+         FOOTER
+         ==================================================================== -->
+    <footer class="app-footer">
+      <p>Weekly Focus · Personal Operating System · Designed for Consistency</p>
+      <div id="footerPwaStatus" class="footer-pwa-status">
+        <span>● PWA Ready &amp; Offline Capable</span>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Application Script -->
+  <script src="js/app.js"></script>
+</body>
+</html>
