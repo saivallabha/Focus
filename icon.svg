@@ -1,0 +1,41 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 512 512"
+>
+  <rect
+    width="512"
+    height="512"
+    rx="110"
+    fill="#0b0d12"
+  />
+
+  <rect
+    x="96"
+    y="96"
+    width="320"
+    height="320"
+    rx="55"
+    fill="#11141b"
+    stroke="#7c8cff"
+    stroke-width="12"
+  />
+
+  <path
+    d="M160 190
+       H352
+       M160 256
+       H352
+       M160 322
+       H280"
+    stroke="#f5f7fa"
+    stroke-width="24"
+    stroke-linecap="round"
+  />
+
+  <circle
+    cx="330"
+    cy="322"
+    r="34"
+    fill="#61d39c"
+  />
+</svg>
