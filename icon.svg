@@ -1,41 +1,33 @@
-<svg
-  xmlns="http://www.w3.org/2000/svg"
-  viewBox="0 0 512 512"
->
-  <rect
-    width="512"
-    height="512"
-    rx="110"
-    fill="#0b0d12"
-  />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090b11"/>
+      <stop offset="100%" stop-color="#121620"/>
+    </linearGradient>
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
 
-  <rect
-    x="96"
-    y="96"
-    width="320"
-    height="320"
-    rx="55"
-    fill="#11141b"
-    stroke="#7c8cff"
-    stroke-width="12"
-  />
+  <!-- Base App Background -->
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad)"/>
+  
+  <!-- Outer Subtle Glow Ring -->
+  <rect x="76" y="76" width="360" height="360" rx="60" fill="#121724" stroke="url(#borderGrad)" stroke-width="12"/>
 
-  <path
-    d="M160 190
-       H352
-       M160 256
-       H352
-       M160 322
-       H280"
-    stroke="#f5f7fa"
-    stroke-width="24"
-    stroke-linecap="round"
-  />
-
-  <circle
-    cx="330"
-    cy="322"
-    r="34"
-    fill="#61d39c"
-  />
+  <!-- Schedule Bars -->
+  <!-- Top Bar: Progress -->
+  <rect x="140" y="160" width="232" height="28" rx="14" fill="#f8fafc"/>
+  
+  <!-- Mid Bar: Focus Active -->
+  <rect x="140" y="228" width="168" height="28" rx="14" fill="#7c8cff"/>
+  <rect x="324" y="228" width="48" height="28" rx="14" fill="#334155"/>
+  
+  <!-- Bottom Bar with Checkmark Badge -->
+  <rect x="140" y="296" width="128" height="28" rx="14" fill="#94a3b8"/>
+  
+  <!-- Success Target Badge -->
+  <circle cx="340" cy="310" r="38" fill="#10b981"/>
+  <path d="M324 310 L335 321 L358 298" fill="none" stroke="#ffffff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

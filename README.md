@@ -1,60 +1,87 @@
-# Weekly Focus
+# Weekly Focus 🎯
 
-A personal productivity PWA for managing:
+> **"Consistent effort → real progress → better me."**  
+> *"Don't optimize the timetable. Follow the timetable. Missed a block? Don't punish the next block. Resume from where you are."*
 
-- DSA
-- Academics
-- Full-stack projects
-- AI projects
-- SIH work
-- Applications
-- GitHub / portfolio
-- Sleep and consistency
+A personal productivity operating system and installable Progressive Web App (PWA) tailored for disciplined daily execution across **DSA, Academics, Projects, Career, and Recovery**.
 
-## Schedule
+---
 
-College:
+## ⚡ Core Pillars & Priorities
 
-9:40 AM – 4:20 PM
+1. **DSA** — Daily problem solving + revision
+2. **Academics** — Classes, revision and exam preparation
+3. **Projects** — Build real, explainable software
+4. **Career** — Applications, GitHub and portfolio
+5. **Sleep** — Protect recovery and consistency
+6. **Discipline** — Do the planned block, not the perfect block
 
-Hostel:
+---
 
-Approximately 5:00 – 5:30 PM
+## 🚀 Flagship Projects
 
-## Flagship Projects
+- **CampusUnstop** (`FULL STACK` · Primary Focus) — Full-stack campus event management platform with authentication, event management, registrations, calendar and notifications. *(Mon & Tue 6:00–7:30 PM)*
+- **Bhoomitra-AI** (`AI + IoT` · 🏆 1st Prize — GenAI Forge 2026) — AI-powered precision farming system using crop disease detection, ESP32 monitoring, irrigation automation and web dashboard. *(Wed 6:00–7:30 PM)*
+- **ShilpAI** (`AI · SIH 2026` · PS SIH26090) — AI-powered digital marketplace and smart cataloging platform for marginalized artisans. *(Thu 6:00–7:30 PM)*
+- **TBP-SIH26092** (`SIH 2026` · Design / Architecture Stage) — Current SIH 2026 problem-solving project. *(Sat & Sun Build)*
 
-### CampusUnstop
-Full-stack campus event management platform.
+---
 
-### Bhoomitra-AI
-AI + IoT precision farming system.
+## 📅 Daily Context & Schedule
 
-1st Prize — GenAI Forge 2026.
+- **College**: 9:40 AM – 4:20 PM
+- **Hostel Return**: 5:00 – 5:30 PM
+- **Decompression**: 5:30 – 6:00 PM (Dedicated break after returning)
+- **Weekend Mode**:
+  - **Saturday Flow**: Deep project work → TBP-SIH26092 → DSA → Academics
+  - **Sunday Flow**: TBP-SIH26092 design/research → Academic revision → Applications → Weekly planning → Rest
 
-### ShilpAI
-AI-powered artisan marketplace.
+---
 
-SIH 2026 PS SIH26090.
+## 🎯 Weekly Targets
 
-### TBP-SIH26092
-SIH 2026 project currently in design stage.
+- **Academics**: 10–12 hours
+- **DSA**: 8–9 hours
+- **Projects**: 6–8 hours
+- **Applications**: 2–3 hours
+- **GitHub / Portfolio**: 1–2 hours
 
-## Weekly Targets
+Includes an interactive hour tracker with localStorage persistence (no fake percentages).
 
-- Academics: 10–12 hours
-- DSA: 8–9 hours
-- Projects: 6–8 hours
-- Applications: 2–3 hours
-- GitHub / Portfolio: 1–2 hours
+---
 
-## Deployment
+## 📱 PWA & Android Installation
 
-This project is designed to be deployed using GitHub Pages.
+1. Deploy to Vercel or open on your Android phone using Chrome.
+2. An **Install App** button will automatically appear in the top bar. Alternatively, tap:
+   `Chrome Menu (⋮) → Add to Home screen / Install App`.
+3. Weekly Focus will install with a native standalone display mode, dedicated dark icon, offline caching, and instant launch.
 
-After deployment, open the website in Chrome on Android and choose:
+---
 
-Menu → Add to Home screen
+## 💻 Local Development
 
-or
+### Option 1: Any static server or Python
+```bash
+python -m http.server 3000
+```
+Then visit `http://localhost:3000`.
 
-Menu → Install app
+### Option 2: Node.js
+```bash
+npx serve .
+```
+
+---
+
+## 🌐 Vercel Deployment
+
+This project is pre-configured with `vercel.json` for optimal static caching and PWA headers:
+- `sw.js` is served with `Cache-Control: public, max-age=0, must-revalidate` so updates are delivered immediately.
+- `manifest.webmanifest` is served with proper MIME type `application/manifest+json`.
+
+To deploy:
+```bash
+vercel
+```
+or connect the GitHub repository directly to Vercel dashboard.
