@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0d12" />
+  <meta name="description" content="Sai's Weekly Focus — DSA, academics, projects and career." />
+
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+
+  <title>Weekly Focus</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #090b10;
+      --card: #11141b;
+      --card2: #171b24;
+      --border: #252b37;
+      --text: #f5f7fa;
+      --muted: #9ba3b2;
+      --accent: #7c8cff;
+      --green: #61d39c;
+      --orange: #ffb86b;
+      --red: #ff7070;
+    }
+
+    body {
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 18px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    header {
+      padding: 18px 0 24px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 6px;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 8vw, 3.5rem);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .quote {
+      background: linear-gradient(135deg, #141827, #10131b);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .quote strong {
+      display: block;
+      font-size: 1.05rem;
+      margin-bottom: 7px;
+    }
+
+    .quote span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    section {
+      margin-bottom: 24px;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+    }
+
+    .priority-grid,
+    .project-grid,
+    .target-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 15px;
+    }
+
+    .card-title {
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .card-text {
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    .project {
+      min-height: 125px;
+    }
+
+    .project .tag {
+      display: inline-block;
+      margin-bottom: 9px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: var(--card2);
+      color: var(--accent);
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+
+    .project p {
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    .schedule {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: var(--card);
+    }
+
+    table {
+      width: 100%;
+      min-width: 700px;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 12px 10px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      font-size: 0.82rem;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--card2);
+      color: var(--accent);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .time {
+      white-space: nowrap;
+      color: var(--orange);
+      font-weight: 700;
+    }
+
+    .weekday {
+      font-weight: 700;
+    }
+
+    .focus {
+      color: var(--muted);
+    }
+
+    .targets {
+      display: grid;
+      gap: 10px;
+    }
+
+    .target {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+    }
+
+    .target-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .target-value {
+      color: var(--green);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .checklis
